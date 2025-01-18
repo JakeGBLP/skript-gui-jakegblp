@@ -16,6 +16,8 @@ import ch.njol.util.Kleenean;
 import io.github.apickledwalrus.skriptgui.SkriptGUI;
 import org.eclipse.jdt.annotation.Nullable;
 
+import static it.jakegblp.lusk.utils.DeprecationUtils.test;
+
 @Name("Has GUI")
 @Description("Checks whether the given player(s) has/have a GUI open.")
 @Examples({
@@ -46,7 +48,7 @@ public class CondHasGUI extends Condition {
 
 	@Override
 	public boolean check(Event e) {
-		return players.check(e, p -> SkriptGUI.getGUIManager().hasGUI(p), isNegated());
+		return test(e, players, player -> SkriptGUI.getGUIManager().hasGUI(player), isNegated());
 	}
 
 	@Override
